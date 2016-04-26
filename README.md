@@ -35,7 +35,7 @@ $ echo "stats" | nc localhost 8080 | jq '.'
       }
     },
     "storage": {
-      "/": {
+      "/": { # All mounted block-device filesystems are automatically discovered
         "free": 60062488, # All storage values in KB
         "inodesfree": 3838717,
         "inodestotal": 3932160,
