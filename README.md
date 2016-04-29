@@ -1,9 +1,20 @@
 # ostat
 
 # Overview
-Ostat is intended to be extremely lightweight and provide basic systems metrics in json via a simple TCP endpoint. It runs as a daemon and fetches the respective metrics on the configured interval.
+ostat is intended to be extremely lightweight and provide basic systems metrics in json via a simple TCP endpoint. It runs as a daemon and fetches the respective metrics on the configured interval. 
+
+ostat includes the ofetch tool (utils/ofetch) for quickly gathering metrics from a whole network of hosts.
 
 # Usage
+
+```shell
+$ ostat -h
+Usage of ./ostat:
+  -listen string
+        Listen address:port (default "localhost:8080")
+  -update-int int
+        Metrics update interval (default 30)
+```
 
 Output with comments:
 
@@ -55,10 +66,3 @@ $ echo "stats" | nc localhost 8080 | jq '.'
 - `go get github.com/jamiealquiza/ostat`
 - `go install github.com/jamiealquiza/ostat`
 - Binary will be found at `$GOPATH/bin/ostat`
-- Usage:
-<pre>$ ostat -h
-Usage of ./ostat:
-  -listen string
-        Listen address:port (default "localhost:8080")
-  -update-int int
-        Metrics update interval (default 30)</pre>
