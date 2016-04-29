@@ -3,7 +3,7 @@
 # Overview
 Ostat is an extremely lightweight Linux daemon that provides basic systems metrics in json via a TCP endpoint.
 
-Ostat includes the ofetch tool (utils/ofetch) for quickly gathering metrics from a whole network of hosts.
+Ostat includes the ofetch tool ([utils/ofetch](https://github.com/jamiealquiza/ostat/tree/master/utils/ofetch)) for quickly gathering metrics from a whole network of hosts.
 
 # Usage
 
