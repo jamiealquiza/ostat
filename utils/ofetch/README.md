@@ -1,6 +1,6 @@
 
 # Overview
-ofetch is an extremely fast scatter/gather tool for fetching metrics from a network of nodes running ostat. ofetch takes a CIDR notated network and parallelizes requests to the entire range.
+Ofetch is an extremely fast scatter/gather tool for fetching metrics from a network of nodes running ostat. Ofetch takes a CIDR notated network and parallelizes requests to the entire range.
 
 # Usage
 
