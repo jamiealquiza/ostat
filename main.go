@@ -24,8 +24,8 @@
 package main
 
 import (
-	"fmt"
 	"flag"
+	"fmt"
 	"io"
 	"log"
 	"net"
@@ -43,7 +43,7 @@ var (
 
 	settings struct {
 		listenAddr string
-		updateInt int
+		updateInt  int
 	}
 )
 

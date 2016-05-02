@@ -51,7 +51,7 @@ func generalMetrics() interface{} {
 	var data struct {
 		Uptime int64 `json:"uptime"`
 		CPU    struct {
-			model string `json:"Model"`
+			Model string `json:"model"`
 			Cores int    `json:"cores"`
 		} `json:"cpu"`
 		Load struct {
