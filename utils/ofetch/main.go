@@ -49,7 +49,7 @@ var Settings struct {
 
 func init() {
 	flag.IntVar(&Settings.c, "c", 256, "request concurrency")
-	flag.IntVar(&Settings.t, "t", 25, "request timeout in ms")
+	flag.IntVar(&Settings.t, "t", 50, "request timeout in ms")
 	flag.StringVar(&Settings.net, "net", "192.168.1.100/32", "network CIDR range")
 	flag.StringVar(&Settings.port, "port", "8080", "ostat listening port")
 	flag.StringVar(&Settings.filter, "filter", "", "regex filter by key")

@@ -15,7 +15,7 @@ Usage of ./ofetch:
   -port string
         ostat listening port (default "8080")
   -t int
-        request timeout in ms (default 25)
+        request timeout in ms (default 50)
 ```
 
 The `-filter` directive takes a "key:regex" format parameter used for filtering metrics. Use "hostname:regex" to filter hostnames, or "general.cpu.model:regex" references for other keys.
