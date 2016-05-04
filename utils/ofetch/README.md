@@ -8,6 +8,8 @@ Ofetch is an extremely fast scatter/gather tool for fetching metrics from a netw
 Usage of ./ofetch:
   -c int
         request concurrency (default 256)
+  -filter string
+        regex filter by key
   -net string
         network CIDR range (default "192.168.1.100/32")
   -port string
@@ -15,6 +17,8 @@ Usage of ./ofetch:
   -t int
         request timeout in ms (default 25)
 ```
+
+The `-filter` directive takes a "key:regex" format parameter used for filtering metrics. Use "hostname:regex" to filter hostnames, or "general.cpu.model:regex" references for other keys.
 
 ```bash
 $ ./ofetch -net="192.168.239.10/28" | jq '.'
