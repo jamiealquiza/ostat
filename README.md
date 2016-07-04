@@ -38,7 +38,7 @@ $ echo "stats" | nc localhost 8080 | jq '.'
         "total": 8175632, # All mem values in KB
         "free": 6845488,
         "used": 1330144,
-        "usedp": 16, # Memory used in percent
+        "usedp": 16, # Memory used in percent, excludes buffers/cache
         "shared": 0, 
         "buffer": 102332,
         "swaptotal": 0,
