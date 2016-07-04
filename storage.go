@@ -62,7 +62,7 @@ func storageMetrics() interface{} {
 		data[m[0]]["total"] = uint64(s.Bsize) * s.Blocks / 1024
 		data[m[0]]["free"] = uint64(s.Bsize) * s.Bfree / 1024
 		data[m[0]]["used"] = data[m[0]]["total"].(uint64) - data[m[0]]["free"].(uint64)
-		data[m[0]]["usedp"] = uint64(float64(data[m[0]]["used"].(uint64)) / float64(data[m[0]]["free"].(uint64)) * 100)
+		data[m[0]]["usedp"] = uint64(float64(data[m[0]]["used"].(uint64)) / float64(data[m[0]]["total"].(uint64)) * 100)
 		data[m[0]]["inodestotal"] = s.Files
 		data[m[0]]["inodesfree"] = s.Ffree
 		data[m[0]]["inodesused"] = data[m[0]]["inodestotal"].(uint64) - data[m[0]]["inodesfree"].(uint64)
