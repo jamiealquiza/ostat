@@ -25,6 +25,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"log"
 	"os"
@@ -89,7 +90,7 @@ func generalMetrics() interface{} {
 	data.Mem.Total = s.Totalram / 1024
 	data.Mem.Free = s.Freeram / 1024
 	data.Mem.Used = data.Mem.Total - data.Mem.Free
-	data.Mem.Usedp = uint64(float64(data.Mem.Used) / float64(data.Mem.Total) * 100.00)
+	data.Mem.Usedp = uint64(float64(data.Mem.Used-getBufferCache()) / float64(data.Mem.Total) * 100.00)
 	data.Mem.Shared = s.Sharedram / 1024
 	data.Mem.Buffer = s.Bufferram / 1024
 	data.Mem.Swaptotal = s.Totalswap / 1024
@@ -125,4 +126,56 @@ func getCpuModel() string {
 
 	model := strings.TrimSpace(strings.Split(cpuInfo, ":")[1])
 	return model
+}
+
+// getBufferCache fetches the combined buffer+cache
+// memory usage from meminfo; the sysinfo call
+// doesn't include this for whatever reason.
+func getBufferCache() uint64 {
+	meminfo, _ := os.Open("/proc/meminfo")
+	defer meminfo.Close()
+
+	// Raw byte slice prefix search for "Buffer"
+	// and "Cached" rather than string regex.
+	bBuffer := []byte{66, 117, 102, 102, 101, 114}
+	bCached := []byte{67, 97, 99, 104, 101, 100}
+	var mem uint64
+
+	scanner := bufio.NewScanner(meminfo)
+	count := 0
+	for scanner.Scan() {
+		l := scanner.Bytes()
+		if bytes.Equal(l[:6], bBuffer) || bytes.Equal(l[:6], bCached) {
+			count++
+			mem += findInt(l)
+		}
+		// Don't bother reading the rest
+		// of meminfo if we have both
+		// buffers and cached already.
+		if count == 2 {
+			break
+		}
+	}
+
+	return mem
+}
+
+// findInt takes the Strips the whitespace and
+// ending 'KB' string from the meminfo
+// output lines and returns the int.
+func findInt(b []byte) uint64 {
+	var pos int
+	atWhiteSpace := false
+	for i := range b {
+		if atWhiteSpace && b[i+1] != 32 {
+			pos = i + 1
+			break
+		}
+		if b[i] == 32 {
+			atWhiteSpace = true
+		}
+		i++
+	}
+	val, _ := strconv.Atoi(string(b[pos : len(b)-3]))
+	return uint64(val)
 }
