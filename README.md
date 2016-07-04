@@ -1,9 +1,9 @@
 # ostat
 
 # Overview
-Ostat is an extremely lightweight Linux daemon that provides basic systems metrics in json via a TCP endpoint.
+Ostat is an extremely lightweight Linux daemon that provides basic systems metrics in json via a TCP server. Values are background refreshed on a `-update-int` seconds intervals and stored in memory for access.
 
-Ostat includes the ofetch tool ([utils/ofetch](https://github.com/jamiealquiza/ostat/tree/master/utils/ofetch)) for quickly gathering metrics from a whole network of hosts.
+Ostat includes the ofetch tool ([utils/ofetch](https://github.com/jamiealquiza/ostat/tree/master/utils/ofetch)) for quickly gathering metrics from a whole network of hosts in a highly parallelized fashion.
 
 # Usage
 
