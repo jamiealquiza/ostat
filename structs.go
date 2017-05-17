@@ -28,6 +28,8 @@ import (
 	"sync"
 )
 
+// Metrics reads from inputs and writes
+// output to data.
 type Metrics struct {
 	sync.Mutex
 	data   map[string]map[string]interface{}

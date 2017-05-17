@@ -45,7 +45,7 @@ func init() {
 	metrics.registerInput("general", generalMetrics)
 	// This will never change at runtime. Fetch CPU info once.
 	cpuModelr, _ = regexp.Compile("model name")
-	cpuModel = getCpuModel()
+	cpuModel = getCPUModel()
 }
 
 func generalMetrics() interface{} {
@@ -108,8 +108,8 @@ func siLoadShift(u uint64) float64 {
 	return f
 }
 
-// getCpuModel returns the CPU model string from /proc/cpuinfo.
-func getCpuModel() string {
+// getCPUModel returns the CPU model string from /proc/cpuinfo.
+func getCPUModel() string {
 	f, _ := os.Open("/proc/cpuinfo")
 	defer f.Close()
 
