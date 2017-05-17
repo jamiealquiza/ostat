@@ -37,6 +37,7 @@ import (
 	"github.com/jamiealquiza/cidrxpndr"
 )
 
+// Settings holds oftech settings.
 var Settings struct {
 	c       int
 	t       int
@@ -140,7 +141,7 @@ func fetch(c chan []byte) map[string]Stat {
 	for i := range c {
 		m := Stat{}
 		json.Unmarshal(i[:len(i)-1], &m)
-		for k, _ := range m {
+		for k := range m {
 			metrics[k] = m
 		}
 	}

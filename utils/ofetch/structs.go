@@ -1,5 +1,6 @@
 package main
 
+// Stat holds information fetched.
 type Stat map[string]struct {
 	General struct {
 		Uptime int64
@@ -27,6 +28,8 @@ type Stat map[string]struct {
 	Storage map[string]Storage
 }
 
+// Storage holds storage-specific
+// information.
 type Storage struct {
 	Free        uint64
 	Inodesfree  uint64
