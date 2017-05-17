@@ -1,3 +1,5 @@
+// Package cidrxpndr converts CIDR notation
+// strings to a list of IP addresses.
 package cidrxpndr
 
 import (
